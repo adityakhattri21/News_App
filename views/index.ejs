@@ -1,125 +1,57 @@
 
  <%- include('header') -%>
  
-    
-
-<main class="container">
-  <div class="p-4 p-md-5 mb-4 rounded text-bg-dark">
-    <div class="col-md-6 px-0">
-      <h1 class="display-4 fst-italic">Title of a longer featured blog post</h1>
-      <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
-      <p class="lead mb-0"><a href="#" class="text-white fw-bold">Continue reading...</a></p>
-    </div>
-  </div>
+    <main class="container">
+      <div class="p-4 p-md-5 mb-4 rounded text-bg-dark">
+        <div class="col-md-6 px-0">
+          <h1 class="display-4 fst-italic"><%= newBlog.articles[0].title %></h1>
+          <p class="lead my-3"><%=newBlog.articles[0].description %></p>
+          <p class="lead mb-0"><a href="<%= newBlog.articles[0].url %>" class="text-white fw-bold">Continue reading...</a></p>
+        </div>
+      </div>
 
   <div class="row mb-2">
-    <div class="col-md-6">
-      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-        <div class="col p-4 d-flex flex-column position-static">
-          <h3 class="mb-0">Featured post</h3>
-          <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="stretched-link">Continue reading</a>
-        </div>
-        <div class="col-auto d-none d-lg-block">
-          <img class="bd-placeholder-img" width="200" height="250" src="https://c.ndtvimg.com/2022-09/6hn9gsqo_pfi-raids_625x300_28_September_22.jpg" alt="">
-
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-        <div class="col p-4 d-flex flex-column position-static">
-          <strong class="d-inline-block mb-2 text-success">Design</strong>
-          <h3 class="mb-0">Post title</h3>
-          <div class="mb-1 text-muted">Nov 11</div>
-          <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="stretched-link">Continue reading</a>
-        </div>
-        <div class="col-auto d-none d-lg-block">
-          <svg class="bd-placeholder-img" width="200" height="250" src="https://c.ndtvimg.com/2022-09/6hn9gsqo_pfi-raids_625x300_28_September_22.jpg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-6">
-        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-          <div class="col p-4 d-flex flex-column position-static">
-            <strong class="d-inline-block mb-2 text-success">Design</strong>
-            <h3 class="mb-0">Post title</h3>
-            <div class="mb-1 text-muted">Nov 11</div>
-            <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="stretched-link">Continue reading</a>
-          </div>
-          <div class="col-auto d-none d-lg-block">
-            <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-  
+    <% for (let i =1;i<5;i++) {%>
+      <% if(newBlog.articles[i].description !== null){ %>
+        <div class="col-md-6">
+          <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="col p-4 d-flex flex-column position-static">
+              <h5 class="mb-0"><%= newBlog.articles[i].title %></h5>
+              <p class="card-text mb-auto"><%=newBlog.articles[i].description.slice(0,100) %></p>
+              <a href="<%= newBlog.articles[i].url %>" class="stretched-link">Continue reading</a>
+            </div>
+            <div class="col-auto d-none d-lg-block">
+              <img class="bd-placeholder-img" width="200" height="250" src="<%= newBlog.articles[i].urlToImage %>" alt="">
+    
+            </div>
           </div>
         </div>
-      </div>
-
-      <div class="col-md-6">
-        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-          <div class="col p-4 d-flex flex-column position-static">
-            <strong class="d-inline-block mb-2 text-success">Design</strong>
-            <h3 class="mb-0">Post title</h3>
-            <div class="mb-1 text-muted">Nov 11</div>
-            <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="stretched-link">Continue reading</a>
-          </div>
-          <div class="col-auto d-none d-lg-block">
-            <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-  
-          </div>
-        </div>
-      </div>
+      <% } %>
+      
+      <% } %>
+    
   </div>
 
   <div class="row g-5">
     <div class="col-md-8">
-      
-      
-        <hr class="featurette-divider">
-      
-          <div class="row featurette">
-            <div class="col-md-7">
-              <h2 class="featurette-heading fw-normal lh-1">First featurette heading. <span class="text-muted">It’ll blow your mind.</span></h2>
-              <p class="lead">Some great placeholder content for the first featurette here. Imagine some exciting prose here.</p>
-            </div>
-            <div class="col-md-5">
-              <img  class="jumbo" src="https://images.hindustantimes.com/tech/img/2022/09/23/1600x900/solen-feyissa-UWVJaDvXW_c-unsplash_1_1613191509046_1663919260501_1663919260766_1663919260766.jpg" alt="">
-      
-            </div>
-          </div>
-      
-          <hr class="featurette-divider">
-      
-          <div class="row featurette">
-            <div class="col-md-7 order-md-2">
-              <h2 class="featurette-heading fw-normal lh-1">Oh yeah, it’s that good. <span class="text-muted">See for yourself.</span></h2>
-              <p class="lead">Another featurette? Of course. More placeholder content here to give you an idea of how this layout would work with some actual real-world content in place.</p>
-            </div>
-            <div class="col-md-5 order-md-1">
-              <img  class="jumbo" src="https://c.ndtvimg.com/2022-09/859o3j8_trisha_625x300_23_September_22.jpg" alt="">
-      
-            </div>
-          </div>
-      
+      <h1 style="display: inline-block;" class="blog-header-logo text-dark">Hot Topics </h1>
+      <% for (let j =5;j<9;j++) {%>
+        <% if(newBlog.articles[j].description !== null){ %>
           <hr class="featurette-divider">
       
           <div class="row featurette">
             <div class="col-md-7">
-              <h2 class="featurette-heading fw-normal lh-1">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-              <p class="lead">And yes, this is the last block of representative placeholder content. Again, not really intended to be actually read, simply here to give you a better view of what this would look like with some actual content. Your content.</p>
+              <h5 class="featurette-heading fw-normal lh-1"> <%= newBlog.articles[j].title %></h5>
+              <p class="lead"> <%=newBlog.articles[j].description.slice(0,100) %></p>
+              <a href="<%= newBlog.articles[j].url %>" class="stretched-link">Continue reading</a>
             </div>
             <div class="col-md-5">
-             <img class="jumbo" src="https://bsmedia.business-standard.com/_media/bs/img/article/2022-07/08/full/1657226064-7888.jpg" alt="">
+              <img  class="jumbo" src="<%= newBlog.articles[j].urlToImage %>" alt="">
       
             </div>
           </div>
-      
-          <hr class="featurette-divider">
-
+   <% } %>
+          <% } %>
     </div>
 
     <div class="col-md-4">

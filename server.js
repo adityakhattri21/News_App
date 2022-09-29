@@ -22,16 +22,7 @@ app.get("/" , (req,res) =>{
 
     axios.get(URL)
     .then((response)=>{
-        // console.log(response.data);
-        // console.log(response.data.articles[0].title);
-
-        const title = response.data.articles[0].title;
-        const des = response.data.articles[0].description;
-        const articleURL = response.data.articles[0].url;
-        const imgURL = response.data.articles[0].urlToImage;
-
-        // res.render("index" , {headLine: title ,  des: des , articleUrl: articleURL , imgUrl: imgURL});
-        res.render("index");
+        res.render("index" ,{newBlog: response.data});
     })
     .catch((error)=>{
         console.log(error);
