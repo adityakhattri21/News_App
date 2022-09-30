@@ -30,6 +30,66 @@ app.get("/" , (req,res) =>{
     
 });
 
+app.get("/enter" , (req,res)=>{
+    axios.get(`https://newsapi.org/v2/top-headlines?category=entertainment&country=in&apiKey=${apiKey}`)
+    .then((response) =>{
+        res.render("index",{newBlog: response.data});
+    })
+    .catch((error)=>{
+        console.log(error);
+    })
+});
+
+app.get("/tech" , (req,res)=>{
+    axios.get(`https://newsapi.org/v2/top-headlines?category=technology&country=in&apiKey=${apiKey}`)
+    .then((response) =>{
+        res.render("index",{newBlog: response.data});
+    })
+    .catch((error)=>{
+        console.log(error);
+    })
+});
+
+app.get("/business" , (req,res)=>{
+    axios.get(`https://newsapi.org/v2/top-headlines?category=business&country=in&apiKey=${apiKey}`)
+    .then((response) =>{
+        res.render("index",{newBlog: response.data});
+    })
+    .catch((error)=>{
+        console.log(error);
+    })
+});
+
+app.get("/science" , (req,res)=>{
+    axios.get(`https://newsapi.org/v2/top-headlines?category=science&country=in&apiKey=${apiKey}`)
+    .then((response) =>{
+        res.render("index",{newBlog: response.data});
+    })
+    .catch((error)=>{
+        console.log(error);
+    })
+});
+
+app.get("/health" , (req,res)=>{
+    axios.get(`https://newsapi.org/v2/top-headlines?category=health&country=in&apiKey=${apiKey}`)
+    .then((response) =>{
+        res.render("index",{newBlog: response.data});
+    })
+    .catch((error)=>{
+        console.log(error);
+    })
+});
+
+app.get("/sports" , (req,res)=>{
+    axios.get(`https://newsapi.org/v2/top-headlines?category=sports&country=in&apiKey=${apiKey}`)
+    .then((response) =>{
+        res.render("index",{newBlog: response.data});
+    })
+    .catch((error)=>{
+        console.log(error);
+    })
+});
+
 app.listen(port , () =>{
     console.log(`Server started at port ${port}`);
 })
